@@ -20,7 +20,7 @@ So, for our data we have:
 * Categorical: Category, Company, LocationNormalized, ContractType, and ContractTime
 * Target: log1pSalary
 
-The Preprocessing text data stages (which include tokenization, mapping text lines into neural network-digestible matrices and encoding the categirical data) you can see directly in the [project](), so we move directly to the deep learning part. 
+The Preprocessing text data stages (which include tokenization, mapping text lines into neural network-digestible matrices and encoding the categirical data) you can see directly in the [project](https://github.com/privet1mir/NLP/blob/main/Large%20scale%20text%20analysis%20with%20deep%20learning/salary_prediction.ipynb), so we move directly to the deep learning part. 
 
 ## Deep learning part
 
