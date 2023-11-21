@@ -1,5 +1,4 @@
-# N-gram language models or how to write scientific papers
-
+# Going neural
 
 <img src='https://raw.githubusercontent.com/yandexdataschool/nlp_course/master/resources/expanding_mind_lm_kn_3.png' width=400>
 
