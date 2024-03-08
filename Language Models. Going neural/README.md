@@ -34,3 +34,44 @@ But before we optimize, we need to define our neural network. Let's start with a
 
 <img src='https://raw.githubusercontent.com/yandexdataschool/nlp_course/master/resources/fixed_window_lm.jpg' width=400px>
 
+After defining the model called `FixedWindowLanguageModel`, I also implemented categorical crossentropy over training dataset (D) function, that we want to minimize: 
+
+$$ L = {\frac1{|D|}} \sum_{X \in D} \sum_{x_i \in X} - \log p(x_t \mid x_1, \dots, x_{t-1}, \theta) $$
+
+Structure of NN: 
+
+```
+        #embedding layer
+        self.embed = nn.Embedding(n_tokens, emb_size)
+
+        #conv layer
+        self.conv = nn.Conv1d(in_channels=16, out_channels=hid_size, kernel_size=filter_size, stride=strides, padding=0)
+
+        #some dense layers to map into n_tokens size + additional complexity for our nn
+        self.logits = nn.Sequential(nn.Linear(64, 64),
+                                    nn.ReLU(),
+                                    nn.Linear(64, n_tokens))
+```
+
+Hyperparameters for training: 
+```
+batch_size = 128
+lr=0.001
+num of epochs = 2000
+```
+Training process looks like this: 
+
+<img src='https://github.com/privet1mir/NLP/blob/main/Language%20Models.%20Going%20neural/pics/CNN_training_graph.png' width=400px>
+
+We can see that in about 2000 epochs our model's loss reached local minima. Also we can see strong improvence in token's generation: 
+
+Sample before training: `Bridging(Ul(^9$ś>ε-)-σHÜE+0;Ωü+vσ{qàkεb0SR:Wω;qÖτõV!ΩtN.íàρ^Bl`
+
+Sample after training: `A Aresing in and date Fearns of clocation controm the base and models the in the rearning the model 
+ MINed to the problem the comput spar graph the a network (ASNotive decision modelical and as the pro
+ Applical network a section of a tectionstrar dire provel perach exportant of the proposed to extral `
+
+The text looks similar to english, however we can do better! 
+
+## 3. RNN Language Models
+
